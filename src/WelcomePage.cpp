@@ -77,9 +77,15 @@ WelcomePage::WelcomePage(QWidget *parent)
         loginBtn->setFontSize(subTitleFont.pointSizeF());
         loginBtn->setCornerRadius(conf::btn::cornerRadius);
 
+        auto settingsBtn = new RaisedButton(tr("SETTINGS"), this);
+        loginBtn->setMinimumSize(buttonWidth, buttonHeight);
+        loginBtn->setFontSize(subTitleFont.pointSizeF());
+        loginBtn->setCornerRadius(conf::btn::cornerRadius);
+
         btnLayout_->addStretch(1);
         btnLayout_->addWidget(registerBtn);
         btnLayout_->addWidget(loginBtn);
+        btnLayout_->addWidget(settingsBtn);
         btnLayout_->addStretch(1);
 
         topLayout_->addLayout(btnLayout_);
@@ -87,6 +93,7 @@ WelcomePage::WelcomePage(QWidget *parent)
 
         connect(registerBtn, &QPushButton::clicked, this, &WelcomePage::userRegister);
         connect(loginBtn, &QPushButton::clicked, this, &WelcomePage::userLogin);
+        connect(settingsBtn, &QPushButton::clicked, this, &WelcomePage::userSettings);
 }
 
 void

@@ -18,4 +18,7 @@ signals:
 
         // Notify that the user wants to register.
         void userRegister();
+
+        // Notify that the user wants to change settings.
+        void userSettings();
 };

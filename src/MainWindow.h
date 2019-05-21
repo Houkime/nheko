@@ -122,7 +122,7 @@ private slots:
         }
 
         //! Show user settings page.
-        void showUserSettingsPage() { pageStack_->setCurrentWidget(userSettingsPage_); }
+        void showUserSettingsPage() { printf("trying to call settings\n"); pageStack_->setCurrentWidget(userSettingsPage_); }
 
         //! Show the chat page and start communicating with the given access token.
         void showChatPage();

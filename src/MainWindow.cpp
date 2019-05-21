@@ -84,6 +84,7 @@ MainWindow::MainWindow(QWidget *parent)
 
         connect(welcome_page_, SIGNAL(userLogin()), this, SLOT(showLoginPage()));
         connect(welcome_page_, SIGNAL(userRegister()), this, SLOT(showRegisterPage()));
+        connect(welcome_page_,SIGNAL(userSettings()), this, SLOT(showUserSettingsPage()));
 
         connect(login_page_, SIGNAL(backButtonClicked()), this, SLOT(showWelcomePage()));
         connect(login_page_, &LoginPage::loggingIn, this, &MainWindow::showOverlayProgressBar);

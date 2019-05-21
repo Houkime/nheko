@@ -129,6 +129,7 @@ UserSettingsPage::UserSettingsPage(QSharedPointer<UserSettings> settings, QWidge
   , settings_{settings}
 {
         topLayout_ = new QVBoxLayout(this);
+        printf("%s\n", "initialising settings page");
 
         QIcon icon;
         icon.addFile(":/icons/icons/ui/angle-pointing-to-left.png");
@@ -431,10 +432,12 @@ UserSettingsPage::UserSettingsPage(QSharedPointer<UserSettings> settings, QWidge
 void
 UserSettingsPage::showEvent(QShowEvent *)
 {
+        printf("%s\n", "handling show event" );
         // FIXME macOS doesn't show the full option unless a space is added.
         utils::restoreCombobox(fontSizeCombo_, QString::number(settings_->fontSize()) + " ");
         utils::restoreCombobox(scaleFactorCombo_, QString::number(utils::scaleFactor()));
         utils::restoreCombobox(themeCombo_, settings_->theme());
+        printf("%s\n", "combobox done" );
 
         // FIXME: Toggle treats true as "off"
         trayToggle_->setState(!settings_->isTrayEnabled());
@@ -444,9 +447,11 @@ UserSettingsPage::showEvent(QShowEvent *)
         readReceipts_->setState(!settings_->isReadReceiptsEnabled());
         desktopNotifications_->setState(!settings_->hasDesktopNotifications());
         deviceIdValue_->setText(QString::fromStdString(http::client()->device_id()));
+        printf("%s\n", "middle done" );
 
-        deviceFingerprintValue_->setText(
-          utils::humanReadableFingerprint(olm::client()->identity_keys().ed25519));
+        //deviceFingerprintValue_->setText(
+          //utils::humanReadableFingerprint(olm::client()->identity_keys().ed25519));
+        printf("%s\n", "all done" );
 }
 
 void
@@ -462,6 +467,7 @@ UserSettingsPage::resizeEvent(QResizeEvent *event)
 void
 UserSettingsPage::paintEvent(QPaintEvent *)
 {
+        printf("%s\n", "handling paint event" );
         QStyleOption opt;
         opt.init(this);
         QPainter p(this);
